@@ -63,4 +63,187 @@ h1{
     font-family:'Playfair Display', serif;
     font-size:4rem;
     margin-bottom:15px;
-    animation:fadeUp 2
+    animation:fadeUp 2s ease;
+}
+
+.date{
+    opacity:.85;
+    margin-bottom:40px;
+    font-size:1rem;
+}
+
+.message{
+    max-width:900px;
+    font-size:1.4rem;
+    line-height:2.2rem;
+    animation:fadeUp 3s ease;
+}
+
+.heart{
+    font-size:3rem;
+    margin:25px 0;
+    animation:pulse 2s infinite;
+}
+
+.counter{
+    margin-top:35px;
+    font-size:1rem;
+    opacity:.9;
+}
+
+.music{
+    margin-top:25px;
+}
+
+.music a{
+    text-decoration:none;
+    color:white;
+    border:1px solid rgba(255,255,255,.3);
+    padding:12px 25px;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.music a:hover{
+    background:white;
+    color:black;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:.6;
+    animation:twinkle 4s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+@keyframes zoom{
+    from{transform:scale(1);}
+    to{transform:scale(1.15);}
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:.2;}
+    50%{opacity:1;}
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    .message{
+        font-size:1.1rem;
+        line-height:1.8rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="bg"></div>
+    <div class="overlay"></div>
+
+    <div class="content">
+
+        <h1>Pedro ❤️ Yasmin</h1>
+
+        <div class="date">
+            Desde 07 de Março de 2026
+        </div>
+
+        <div class="heart">❤️</div>
+
+        <div class="message" id="texto"></div>
+
+        <div class="counter" id="contador"></div>
+
+        <div class="music">
+            <a href="https://www.youtube.com/results?search_query=Não+Olhe+Assim+Leandro+e+Leonardo"
+            target="_blank">
+            🎵 Nossa Música
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const frase =
+"Te escolhi, escolho e escolherei todos os dias até o fim da minha vida. Eu te amo de forma imensurável.";
+
+let i = 0;
+
+function escrever(){
+
+    if(i < frase.length){
+
+        document.getElementById("texto").innerHTML += frase.charAt(i);
+        i++;
+
+        setTimeout(escrever,50);
+    }
+}
+
+escrever();
+
+const inicio = new Date("2026-03-07");
+
+function atualizarTempo(){
+
+    const hoje = new Date();
+
+    const diff = hoje - inicio;
+
+    const dias = Math.floor(diff/(1000*60*60*24));
+
+    document.getElementById("contador").innerHTML =
+    "❤️ Vivendo essa história há " + dias + " dias";
+}
+
+atualizarTempo();
+setInterval(atualizarTempo,1000);
+
+for(let i=0;i<120;i++){
+
+    let star = document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left = Math.random()*100+"%";
+    star.style.top = Math.random()*100+"%";
+
+    star.style.animationDelay = Math.random()*5+"s";
+
+    document.body.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
