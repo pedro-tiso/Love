@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<!DOCTYPE html><html lang="pt-BR"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pedro ❤️ Yasmin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pedro ❤️ Yasmin</title><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"><style>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
+:root{
+    --bg:#0f0f0f;
+    --card:#181818;
+    --text:#ffffff;
+    --soft:#cfcfcf;
+}
 
 *{
     margin:0;
@@ -16,25 +16,363 @@
 }
 
 body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 20px;
+}
+
+.titulo{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:4rem;
+    font-weight:700;
+
+    margin-bottom:10px;
+
+    animation:fadeIn 2s;
+}
+
+.data{
+
+    color:var(--soft);
+    margin-bottom:40px;
+
+    letter-spacing:2px;
+}
+
+.foto-box{
+
+    width:380px;
+    max-width:92vw;
+
     overflow:hidden;
-    background:#050505;
-    color:white;
-    font-family:Poppins,sans-serif;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 0 40px rgba(255,255,255,.06),
+    0 20px 60px rgba(0,0,0,.5);
+
+    animation:aparecer 2s ease;
 }
 
-.container{
-    position:relative;
-    width:100vw;
-    height:100vh;
+.foto-box img{
+
+    width:100%;
+    display:block;
+
+    animation:zoom 18s infinite alternate ease-in-out;
 }
 
-.bg{
-    position:absolute;
-    inset:0;
-    background:url('foto.jpg') center center;
-    background-size:cover;
-    filter:brightness(.35);
-    animation:zoom 25s ease-in-out infinite alternate;
+.frase{
+
+    max-width:800px;
+
+    text-align:center;
+
+    margin-top:40px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:2rem;
+    line-height:1.6;
+
+    padding:0 20px;
+
+    animation:fadeIn 3s;
+}
+
+.player{
+
+    margin-top:35px;
+}
+
+.btn{
+
+    border:none;
+
+    background:white;
+
+    color:black;
+
+    padding:16px 35px;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+}
+
+.card{
+
+    width:420px;
+    max-width:90vw;
+
+    margin-top:40px;
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,.03);
+}
+
+.card h3{
+
+    margin-bottom:12px;
+}
+
+.contador{
+
+    font-size:1.05rem;
+
+    line-height:1.8;
+}
+
+.rodape{
+
+    margin-top:35px;
+
+    color:#a5a5a5;
+
+    font-size:.9rem;
+}
+
+.heart{
+
+    position:fixed;
+
+    bottom:-30px;
+
+    animation:subir linear forwards;
+
+    pointer-events:none;
+}
+
+@keyframes zoom{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes subir{
+
+    from{
+        transform:translateY(0);
+        opacity:.9;
+    }
+
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+@media(max-width:768px){
+
+    .titulo{
+        font-size:2.8rem;
+    }
+
+    .frase{
+        font-size:1.5rem;
+    }
+}
+
+</style></head><body><section class="hero"><h1 class="titulo">
+    Pedro ❤️ Yasmin
+</h1>
+
+<p class="data">
+    DESDE 07 • 03 • 2026
+</p>
+
+<div class="foto-box">
+
+    <img src="foto.jpg">
+
+</div>
+
+<div class="frase">
+
+    Te escolhi, escolho e escolherei
+    todos os dias até o fim da minha vida.
+
+    <br><br>
+
+    Eu te amo de forma imensurável.
+
+</div>
+
+<div class="player">
+
+    <button class="btn" onclick="playMusic()">
+
+        🎵 Ouvir nossa música
+
+    </button>
+
+    <audio id="music" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<div class="card">
+
+    <h3>❤️ Nossa História</h3>
+
+    <div class="contador" id="contador">
+
+    </div>
+
+</div>
+
+<div class="rodape">
+
+    Com todo meu amor,<br>
+    Pedro
+
+</div>
+
+</section><script>
+
+function playMusic(){
+
+    const music =
+    document.getElementById("music");
+
+    music.play();
+
+    document.querySelector(".btn")
+    .innerHTML =
+    "❤️ Tocando nossa música";
+}
+
+const inicio =
+new Date("2026-03-07T00:00:00");
+
+function atualizar(){
+
+    const agora =
+    new Date();
+
+    const diff =
+    agora - inicio;
+
+    const dias =
+    Math.floor(diff/86400000);
+
+    const horas =
+    Math.floor(
+    diff%86400000/3600000);
+
+    const minutos =
+    Math.floor(
+    diff%3600000/60000);
+
+    const segundos =
+    Math.floor(
+    diff%60000/1000);
+
+    document.getElementById("contador")
+    .innerHTML =
+
+    dias + " dias<br>" +
+    horas + " horas<br>" +
+    minutos + " minutos<br>" +
+    segundos + " segundos";
+}
+
+setInterval(atualizar,1000);
+
+atualizar();
+
+function criarCoracao(){
+
+    const h =
+    document.createElement("div");
+
+    h.classList.add("heart");
+
+    h.innerHTML = "❤️";
+
+    h.style.left =
+    Math.random()*100 + "vw";
+
+    h.style.fontSize =
+    (12 + Math.random()*18)+"px";
+
+    h.style.animationDuration =
+    (8 + Math.random()*5)+"s";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>{
+        h.remove();
+    },13000);
+}
+
+setInterval(criarCoracao,1200);
+
+</script></body>
+</html>    animation:zoom 25s ease-in-out infinite alternate;
 }
 
 .overlay{
